@@ -32,7 +32,7 @@ The assignment is due: Monday, February 27 at 11:59PM (EST)
 Integral: e^(x/2) * sin 5x
 
 ## Part 1 - B
-
+```sh
 double df(double x, double y)            //function for defining dy/dx
 {
 	 return y - .5* pow(M_E, (.5 * x))*sin(5 * x) + 5 * pow(M_E, (.5 * x))*cos(5 * x);
@@ -42,7 +42,8 @@ double exact(double x)            //function for defining dy/dx
 {
 	return pow(M_E, (.5* x)) *sin(5 * x);
 }
-   
+```
+
 ## Part 1 - C
    
 | X | RK1           | RK2           | RK4           | Exact |
@@ -150,9 +151,12 @@ double exact(double x)            //function for defining dy/dx
 |10.0|2998.124017|158.7831645|-39.0670402|-38.93988091|
 
 ## Part 1-D
+| Graph | File |
+| --- | --- |
 | Error Graph   | [files/error.comparison.png]  [File-c] |
 
 ## Part 1-E
+| Graph | File |
 | 3 point RK4   | [files/rk4.comparison.png]    [File-d] |
 | 3 point Error | [files/rk4.error.value.png]   [File-e] |
 
