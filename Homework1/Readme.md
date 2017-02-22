@@ -154,9 +154,13 @@ double exact(double x)            //function for defining dy/dx
 |10.0|2998.124017|158.7831645|-39.0670402|-38.93988091|
 
 ## Part 1-D
+| Graph | File |
+| ----- | ---- |
 | Error Graph   | [files/error.comparison.png]  [File-c] |
 
 ## Part 1-E
+| Graph | File |
+| ----- | ---- |
 | 3 point RK4   | [files/rk4.comparison.png]    [File-d] |
 | 3 point Error | [files/rk4.error.value.png]   [File-e] |
 
