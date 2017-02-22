@@ -37,7 +37,9 @@ double df(double x, double y)            //function for defining dy/dx
 {
 	 return y - .5* pow(M_E, (.5 * x))*sin(5 * x) + 5 * pow(M_E, (.5 * x))*cos(5 * x);
 }
+```
 
+```sh
 double exact(double x)            //function for defining dy/dx
 {
 	return pow(M_E, (.5* x)) *sin(5 * x);
@@ -152,11 +154,12 @@ double exact(double x)            //function for defining dy/dx
 
 ## Part 1-D
 | Graph | File |
-| --- | --- |
+| ----- | ---- |
 | Error Graph   | [files/error.comparison.png]  [File-c] |
 
 ## Part 1-E
 | Graph | File |
+| ----- | ---- |
 | 3 point RK4   | [files/rk4.comparison.png]    [File-d] |
 | 3 point Error | [files/rk4.error.value.png]   [File-e] |
 
