@@ -503,7 +503,7 @@ bool JelloMesh::FloorIntersection(Particle& p, Intersection& intersection)
 	if (p.position[1] < 0.0)
 	{
 		intersection.m_p = p.index;
-		intersection.m_type = CONTACT;
+		intersection.m_type = IntersectionType(CONTACT);
 		intersection.m_distance = -p.position[1];
 		intersection.m_normal = vec3(0, 1, 0);
 		return true;
@@ -511,7 +511,7 @@ bool JelloMesh::FloorIntersection(Particle& p, Intersection& intersection)
 	else if (p.position[1] < 0.5)
 	{
 		intersection.m_p = p.index;
-		intersection.m_type = COLLISION;
+		intersection.m_type = IntersectionType(COLLISION);
 		intersection.m_distance = -p.position[1];
 		intersection.m_normal = vec3(1, 1, 1);
 		return true;
@@ -537,12 +537,123 @@ bool JelloMesh::CylinderIntersection(Particle& p, World::Cylinder* cylinder,
 
 void JelloMesh::EulerIntegrate(double dt)
 {
-    // TODO
+	// TODO
+	double halfdt = 0.5 * dt;
+	ParticleGrid target = m_vparticles;  // target is a copy!
+	ParticleGrid& source = m_vparticles;  // source is a ptr!
+
+										  // Step 1
+	ParticleGrid accum1 = m_vparticles;
+	for (int i = 0; i < m_rows + 1; i++)
+	{
+		for (int j = 0; j < m_cols + 1; j++)
+		{
+			for (int k = 0; k < m_stacks + 1; k++)
+			{
+				Particle& s = GetParticle(source, i, j, k);
+
+				Particle& k1 = GetParticle(accum1, i, j, k);
+				k1.force = halfdt * s.force * 1 / s.mass;
+				k1.velocity = halfdt * s.velocity;
+
+				Particle& t = GetParticle(target, i, j, k);
+				t.velocity = s.velocity + k1.force;
+				t.position = s.position + k1.velocity;
+			}
+		}
+	}
+
+	ComputeForces(target);
+
+	for (int i = 0; i < m_rows + 1; i++)
+	{
+		for (int j = 0; j < m_cols + 1; j++)
+		{
+			for (int k = 0; k < m_stacks + 1; k++)
+			{
+				Particle& p = GetParticle(m_vparticles, i, j, k);
+				Particle& k1 = GetParticle(accum1, i, j, k);
+
+				p.velocity = p.velocity + k1.force;
+				p.position = p.position + k1.velocity;
+			}
+		}
+	}
+
 }
 
 void JelloMesh::MidPointIntegrate(double dt)
 {
-    // TODO
+	// TODO
+	double halfdt = 0.5 * dt;
+	ParticleGrid target = m_vparticles;  // target is a copy!
+	ParticleGrid& source = m_vparticles;  // source is a ptr!
+
+										  // Step 1
+	ParticleGrid accum1 = m_vparticles;
+	for (int i = 0; i < m_rows + 1; i++)
+	{
+		for (int j = 0; j < m_cols + 1; j++)
+		{
+			for (int k = 0; k < m_stacks + 1; k++)
+			{
+				Particle& s = GetParticle(source, i, j, k);
+
+				Particle& k1 = GetParticle(accum1, i, j, k);
+				k1.force = halfdt * s.force * 1 / s.mass;
+				k1.velocity = halfdt * s.velocity;
+
+				Particle& t = GetParticle(target, i, j, k);
+				t.velocity = s.velocity + k1.force;
+				t.position = s.position + k1.velocity;
+			}
+		}
+	}
+
+	ComputeForces(target);
+
+	// Step 2
+	ParticleGrid accum2 = m_vparticles;
+	for (int i = 0; i < m_rows + 1; i++)
+	{
+		for (int j = 0; j < m_cols + 1; j++)
+		{
+			for (int k = 0; k < m_stacks + 1; k++)
+			{
+				Particle& t = GetParticle(target, i, j, k);
+				Particle& k2 = GetParticle(accum2, i, j, k);
+
+				k2.force = halfdt * t.force * 1 / t.mass;
+				k2.velocity = halfdt * t.velocity;
+
+				Particle& s = GetParticle(source, i, j, k);
+				t.velocity = s.velocity + k2.force;
+				t.position = s.position + k2.velocity;
+			}
+		}
+	}
+
+	ComputeForces(target);
+
+	// Put it all together
+	double asixth = 1.0 / 6.0;
+	double athird = 1.0 / 3.0;
+	for (int i = 0; i < m_rows + 1; i++)
+	{
+		for (int j = 0; j < m_cols + 1; j++)
+		{
+			for (int k = 0; k < m_stacks + 1; k++)
+			{
+				Particle& p = GetParticle(m_vparticles, i, j, k);
+				Particle& k1 = GetParticle(accum1, i, j, k);
+				Particle& k2 = GetParticle(accum2, i, j, k);
+
+				p.velocity = p.velocity + .5* k1.force + k2.force;
+				p.position = p.position + .5* k1.position + k2.position;
+
+			}
+		}
+	}
 }
 
 void JelloMesh::RK4Integrate(double dt)
