@@ -3,16 +3,16 @@
 #include <algorithm>
 
 // TODO
-double JelloMesh::g_structuralKs = 1.0; 
-double JelloMesh::g_structuralKd = 1.0; 
-double JelloMesh::g_attachmentKs = 1.0;
-double JelloMesh::g_attachmentKd = 1.0;
-double JelloMesh::g_shearKs = 1.0;
-double JelloMesh::g_shearKd = 1.0;
-double JelloMesh::g_bendKs = 1.0;
-double JelloMesh::g_bendKd = 1.0;
-double JelloMesh::g_penaltyKs = 1.0;
-double JelloMesh::g_penaltyKd = 1.0;
+double JelloMesh::g_structuralKs = 5000.0; 
+double JelloMesh::g_structuralKd = 5.0; 
+double JelloMesh::g_attachmentKs = 10.0;
+double JelloMesh::g_attachmentKd = 10.0;
+double JelloMesh::g_shearKs = 4000.0;
+double JelloMesh::g_shearKd = 6.0;
+double JelloMesh::g_bendKs = 4000.0;
+double JelloMesh::g_bendKd = 5.0;
+double JelloMesh::g_penaltyKs = 6000.0;
+double JelloMesh::g_penaltyKd = 320.0;
 
 JelloMesh::JelloMesh() :     
     m_integrationType(JelloMesh::RK4), m_drawflags(MESH | STRUCTURAL),
@@ -473,10 +473,14 @@ void JelloMesh::ResolveContacts(ParticleGrid& grid)
 
 		// TODO
 		// should occur when the particle is within the object
-		// initial check, are we inside the object?
-		// if so, call resolve contacts
-
-		
+		// Using Infinite Hard Collision - Collision Responce
+		// Collision Response (Bouncing) page - Forumla
+		// v1 = v - 2(v*N)Nr
+		// r=.4 in world file
+		// set the reflected velocity
+		p.velocity = 0.4*(p.velocity - (2 * normal*(normal*p.velocity)));
+		// set the position outside based on how far we penetrated
+		p.position = p.position + contact.m_distance*normal;
 	}
 }
 
@@ -488,12 +492,14 @@ void JelloMesh::ResolveCollisions(ParticleGrid& grid)
 		Particle& pt = GetParticle(grid, result.m_p);
 		vec3 normal = result.m_normal;
 		float dist = result.m_distance;
-
-		// TODO
-		// Should occur when the particle hits the object
-		// second check, are we within the epsilon?
-		// if so, call resolve collisions
 		
+		// TODO
+		// Should occur when the particle is within the epsilon
+		if (dist != 0)
+		{	// Apply a penalty force. G_Penalty set above
+			vec3 Fpenalty = -1 * ((g_penaltyKs*(dist - 0) + g_penaltyKd*(pt.velocity*(normal)))*normal);
+			pt.force += Fpenalty;
+		}
 	}
 }
 
@@ -505,15 +511,15 @@ bool JelloMesh::FloorIntersection(Particle& p, Intersection& intersection)
 		intersection.m_p = p.index;
 		intersection.m_type = IntersectionType(CONTACT);
 		intersection.m_distance = -p.position[1];
-		intersection.m_normal = vec3(0, 1, 0);
+		intersection.m_normal = vec3(0, 0, 0);
 		return true;
 	}
-	else if (p.position[1] < 0.5)
+	else if (p.position[1] < 0.05)
 	{
 		intersection.m_p = p.index;
 		intersection.m_type = IntersectionType(COLLISION);
-		intersection.m_distance = -p.position[1];
-		intersection.m_normal = vec3(1, 1, 1);
+		intersection.m_distance = 0.05-p.position[1];
+		intersection.m_normal = vec3(0, 1, 0);
 		return true;
 	}
 	else
@@ -533,6 +539,7 @@ bool JelloMesh::CylinderIntersection(Particle& p, World::Cylinder* cylinder,
 
     // TODO
     return false;
+
 }
 
 void JelloMesh::EulerIntegrate(double dt)
@@ -649,7 +656,7 @@ void JelloMesh::MidPointIntegrate(double dt)
 				Particle& k2 = GetParticle(accum2, i, j, k);
 
 				p.velocity = p.velocity + .5* k1.force + k2.force;
-				p.position = p.position + .5* k1.position + k2.position;
+				p.position = p.position + .5* k1.velocity + k2.velocity;
 
 			}
 		}
