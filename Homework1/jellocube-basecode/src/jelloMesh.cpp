@@ -196,7 +196,13 @@ void JelloMesh::InitJelloMesh()
                 if (j < m_cols) AddStructuralSpring(GetParticle(g,i,j,k), GetParticle(g,i,j+1,k));
                 if (i < m_rows) AddStructuralSpring(GetParticle(g,i,j,k), GetParticle(g,i+1,j,k));
                 if (k < m_stacks) AddStructuralSpring(GetParticle(g,i,j,k), GetParticle(g,i,j,k+1));
-            }
+				if (j < m_cols) AddBendSpring(GetParticle(g, i, j, k), GetParticle(g, i, j + 1, k));
+				if (i < m_rows) AddBendSpring(GetParticle(g, i, j, k), GetParticle(g, i + 1, j, k));
+				if (k < m_stacks) AddBendSpring(GetParticle(g, i, j, k), GetParticle(g, i, j, k + 1));
+				if (j < m_cols) AddShearSpring(GetParticle(g, i, j, k), GetParticle(g, i, j + 1, k));
+				if (i < m_rows) AddShearSpring(GetParticle(g, i, j, k), GetParticle(g, i + 1, j, k));
+				if (k < m_stacks) AddShearSpring(GetParticle(g, i, j, k), GetParticle(g, i, j, k + 1));
+			}
         }
     }
 
