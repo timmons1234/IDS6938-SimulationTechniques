@@ -3,16 +3,16 @@
 #include <algorithm>
 
 // TODO
-double JelloMesh::g_structuralKs = 5000.0; 
+double JelloMesh::g_structuralKs = 4000.0; 
 double JelloMesh::g_structuralKd = 5.0; 
 double JelloMesh::g_attachmentKs = 10.0;
 double JelloMesh::g_attachmentKd = 10.0;
 double JelloMesh::g_shearKs = 4000.0;
-double JelloMesh::g_shearKd = 6.0;
+double JelloMesh::g_shearKd = 5.0;
 double JelloMesh::g_bendKs = 4000.0;
 double JelloMesh::g_bendKd = 5.0;
 double JelloMesh::g_penaltyKs = 6000.0;
-double JelloMesh::g_penaltyKd = 320.0;
+double JelloMesh::g_penaltyKd = 300.0;
 
 JelloMesh::JelloMesh() :     
     m_integrationType(JelloMesh::RK4), m_drawflags(MESH | STRUCTURAL),
