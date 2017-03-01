@@ -3,16 +3,16 @@
 #include <algorithm>
 
 // TODO
-double JelloMesh::g_structuralKs = 4000.0; 
+double JelloMesh::g_structuralKs = 2000.0; 
 double JelloMesh::g_structuralKd = 5.0; 
 double JelloMesh::g_attachmentKs = 10.0;
 double JelloMesh::g_attachmentKd = 10.0;
-double JelloMesh::g_shearKs = 4000.0;
+double JelloMesh::g_shearKs = 1000.0;
 double JelloMesh::g_shearKd = 5.0;
-double JelloMesh::g_bendKs = 4000.0;
+double JelloMesh::g_bendKs = 1000.0;
 double JelloMesh::g_bendKd = 5.0;
 double JelloMesh::g_penaltyKs = 6000.0;
-double JelloMesh::g_penaltyKd = 300.0;
+double JelloMesh::g_penaltyKd = 320.0;
 
 JelloMesh::JelloMesh() :     
     m_integrationType(JelloMesh::RK4), m_drawflags(MESH | STRUCTURAL),
@@ -502,7 +502,7 @@ void JelloMesh::ResolveCollisions(ParticleGrid& grid)
 		// TODO
 		// Should occur when the particle is within the epsilon
 		if (dist != 0)
-		{	// Apply a penalty force. G_Penalty set above
+		{	// Apply a penalty force. G_Penalty set as a constant above
 			vec3 Fpenalty = -1 * ((g_penaltyKs*(dist - 0) + g_penaltyKd*(pt.velocity*(normal)))*normal);
 			pt.force += Fpenalty;
 		}
