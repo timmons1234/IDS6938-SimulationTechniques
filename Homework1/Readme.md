@@ -104,16 +104,16 @@ double exact(double x)            //function for defining dy/dx
 | Title  | File |
 | ------------- | ------------- |
 | Bouncing Jello | [files/jello_bounce.mp4]   [File-g] |
-| Jello using standard settings and RK4 | |
-   [File-g]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/jello_bounce.mp4>
+| Jello using standard settings and RK4 |  |
 | Sproing Jello | [files/sproing.mp4]   [File-h] |
-| Jello using 20000 Ks and 5 Kd | |
-   [File-h]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/jello_bounce.mp4>
+| Jello using 20000 Ks and 5 Kd |  |
 | Stiff Jello | [files/stiff.mp4]   [File-i] |
-| Jello using 1000 Ks and 50 Kd| |
-   [File-i]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/jello_bounce.mp4>
+| Jello using 1000 Ks and 50 Kd|  |
 | RK1 Floor Implode Jello | [files/rk1.mp4]   [File-j] |
-| Jello using RK1 | |
+| Jello using RK1 |  |
+   [File-g]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/jello_bounce.mp4>
+   [File-h]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/sproing.mp4>
+   [File-i]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/stiff.mp4>
    [File-j]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/rk1.mp4>
 
 
