@@ -59,6 +59,8 @@ double exact(double x)            //function for defining dy/dx
 | 3 point RK4   | [files/rk4.comparison.png]    [File-d] |
 | 3 point Error | [files/rk4.error.value.png]   [File-e] |
 
+Note here. I read the requirements as use three points here, specifically because we were looking at how having a large stepsize would affect the error rate. Others in class used examples of varying the stepsize in multiple examples. 
+
 ## Part 1-F
  - 1) As we move from RK1 to RK4 we increase the sampling of the values along the curve. The more samples we take, the more accurate the final answer
  - 2) As we increase the X value we diverge from the exact value. While RK4 maintains better accuracy due to greater sampling, given a high enough X it will begin to diverge
@@ -85,8 +87,8 @@ double exact(double x)            //function for defining dy/dx
  - 6e) Unsure how to implement.
  - 6f) Unsure how to implement. Likely involves spawning a second cube at a new location, then iterating over the second cubes particles on every pass. maybe a for loop around your main section where you resolve the world and contacts for each cube. 
  - 6g) more stable integration methods would likely further slow down the cube. Not sure what any of these integration methods are. 
- - 6h) See Part 5 below
- - 6i) (second movie with spring stiffness)
+ - 6h) Short video of the cube reacting in Part 5 below
+ - 6i) I took a couple more videos using different settings. these are listed in Part 5 below.
  - 6j) Unsure how to implement. 
  - 6k) --
  
@@ -99,8 +101,27 @@ double exact(double x)            //function for defining dy/dx
  - 5) Link the molecules together, use a low Ks and minimal Kd. Implement some sort of penalty for friction. Water has unique properties which would need to be accounted for. 
  
  ## Part 4 - Final Report
+Not sure what to put for the final report. Many of the items listed within the requirements are covered above. If possible and appropriate, I'd like to use this area for feedback. This was a difficult assignment. In the late 90s I worked for a .com as a system's administrator and did a lot of script level coding both as part of my duties and also for customer deliverables. As part of the job I picked up a foundation in C, but moved to PERL because of ease of use. While this gave me a leg up when working with the cube, it wasn't enough to feel comfortable. Many of these items were a struggle both to conceptualize, as well as convert from logic out to code in a language I'd never coded in. While I've never considered myself a programmer, I'm good at data manipulation. With data, I know what I want to do and how to make regular expressions to get there. But this project was far outside of my normal scope. 
+Not intended as a criticism, but when I think about the assignment, I feel for those with lower levels of programming skill it might be better to come at the cube as a semester project where you work towards implementing sections of the code on a weekly basis. In the begining of class we were taking small steps forward and building on our successes, but with the homework it seemed like it went from small steps to a giant vertical leap. 
 
- ## Part 5 - Extra Credit
+I know one of the areas I struggled in was needing to implement the floor, then collision just to see an effect. I'm very much a trial and error type person. By not seeing the floor I struggled over a lack of positive errors to learn from. Lesson learned, ask for help earlier. 
+
+On a more positive note: this homework made me think more about simulation and how it works. I (like a think a lot of people in the course) play games. Recently while playing the current Hitman, I started thinking of it more as an environmental simulator. I started looking at the hows and whys of how the environment reacted and it felt more intuitive and if anything made it more interesting. I think our third assignment covers agent based simulation, and might add more to this. 
+
+I worked with a couple of students on concept level stuff in the course. I honestly wished I had the opportunity to collaborate directly with more people from the course. 
+
+Additionally, the guidance out of piazza was awesome. I was hopelessly stuck on the forces equation until the framework was posted. 
+I used Symbolab to generate my integral. it's a neat site which does step by step for most math functions and also will markup your equations into LaTeX.
+
+I asked one of my programmer friends to help out, but as I was explaining the code and the requirements I realized how it would take on his part reading and figuring out what I was doing to help out. :) I really didnt want it to turn into his homework assignement just to help me out. 
+
+I know there are un-implemented items within the cube, but I'm confortable with where it's at. Last night, I showed my SO the video where the cube seems to teleport off the screen and she grinned. That's good enough for me. :)
+
+That's all I've got. 
+
+
+
+## Part 5 - Extra Credit
 | Title  | File |
 | ------------- | ------------- |
 | Bouncing Jello | [files/jello_bounce.mp4]   [File-g] |
@@ -111,6 +132,7 @@ double exact(double x)            //function for defining dy/dx
 | Jello using 1000 Ks and 50 Kd|  |
 | RK1 Floor Implode Jello | [files/rk1.mp4]   [File-j] |
 | Jello using RK1 |  |
+
    [File-g]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/jello_bounce.mp4>
    [File-h]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/sproing.mp4>
    [File-i]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework1/files/stiff.mp4>
