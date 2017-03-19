@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\school\fork\IDS6938-SimulationTechniques-master\Homework2\SnakesAndLadders\out\CMakeFiles\3959417a14fc5cbb855fa28767eefa72\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{AE6C7FD3-6DDF-36BE-B170-88AA190A69DA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
