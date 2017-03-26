@@ -13,6 +13,12 @@
 int main(){
 
 	SetTransitionMatrix();
+	double onesix = (1.0 / 6.0);
+	double twosix = (2.0 / 6.0);
+	double thrsix = (3.0 / 6.0);
+	double fousix = (4.0 / 6.0);
+	double fivsix = (5.0 / 6.0);
+
 
 	//Output Vector
 	v.setZero();
@@ -24,10 +30,10 @@ int main(){
 
 	
    // TODO add Markov vector - Matrix multiplication
-
+	v = v.transpose() * TransitionMatrix; //V(K+1) = v(k) T.
 
 	std::cout <<  v << std::endl;
-	//myfile << v << std::endl;  //this is just a sample, becareful how you print to file so you can mine useful stats
+	//myfile << v << std::endl;  //this is just a sample, be careful how you print to file so you can mine useful stats
 	
 	myfile.close();
 
