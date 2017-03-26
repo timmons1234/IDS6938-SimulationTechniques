@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
           {
             case 0:
 				//TODO add_external_arrival() for ID Checkpoint;
-				IDCHECKPOINT.is_within_confidence_interval();
+//				IDCHECKPOINT.is_within_confidence_interval();
 				IDCHECKPOINT.add_external_arrival();
                  break;
             case 1:
