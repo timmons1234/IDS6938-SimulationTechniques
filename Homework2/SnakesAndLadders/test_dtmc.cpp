@@ -31,10 +31,11 @@ int main() {
 	for (unsigned int i = 0; i < N; ++i) {
 		
 		//TODO (add DTMC, and histogram lines.)
-
+		discreteMC = DTMC(TransitionMatrix, ROLLS, start);
+		++hist[std::round(discreteMC.back())];
 		// Code if you wanted to print out results at each step
-		//for (auto elem : discreteMC)
-		//	std::cout << elem << std::endl;
+		for (auto elem : discreteMC)
+			std::cout << elem << std::endl;
 
 	}
 	//Returns an array discreteMC with the states at each step of the discrete-time Markov Chain

@@ -10,35 +10,57 @@ unsigned int ROLLS = 10; //TODO
 
 double prob = 1.0/6.0 ;  //TODO
 
-
 void SetTransitionMatrix()
 {
 	TransitionMatrix.setZero();
 
-	//TODO
-	std::string str;                      // This will store your tokens
-	std::ifstream file("c:/null_export.txt");		// Null state
-//	std::ifstream file("c:/snakes_export.txt");		// Snakes and Ladders
-
-	int counter_row = 0;
-	int counter_column = 0;
-	while (getline(file, str, ','))   // You can have a different delimiter
+	for (int i = 0; i < TransitionMatrix.rows() - 6; i++) //from class on 3/21  -6 omits last 6 rows
 	{
-		// Process your data
-		std::cout << counter_column << " " << counter_row << "  -" << str << std::endl;
-		TransitionMatrix(counter_column, counter_row) = stof(str);
-
-		counter_row++;
-		if (counter_row == TransitionMatrix.rows() + 1)
-		{
-			counter_row = 0;
-			counter_column++;
-		}
-
+		TransitionMatrix(i, i + 1) = prob;
+		TransitionMatrix(i, i + 2) = prob;
+		TransitionMatrix(i, i + 3) = prob;
+		TransitionMatrix(i, i + 4) = prob;
+		TransitionMatrix(i, i + 5) = prob;
+		TransitionMatrix(i, i + 6) = prob;
 	}
+	// A markov chain defines the probability from state i to state j by a transition matrix, T
+	
+// row 95 sucks
+	TransitionMatrix(95, 96) = prob;
+	TransitionMatrix(95, 97) = prob;
+	TransitionMatrix(95, 98) = prob;
+	TransitionMatrix(95, 99) = prob;
+	TransitionMatrix(95, 100) = prob*2;
+
+	// row 96 sucks
+	TransitionMatrix(96, 97) = prob;
+	TransitionMatrix(96, 98) = prob;
+	TransitionMatrix(96, 99) = prob;
+	TransitionMatrix(96, 100) = prob*3;
+
+	// row 97 sucks
+	TransitionMatrix(97, 98) = prob;
+	TransitionMatrix(97, 99) = prob;
+	TransitionMatrix(97, 100) = prob*4;
+
+	// row 98 sucks
+	TransitionMatrix(98, 99) = prob;
+	TransitionMatrix(98, 100) = prob*5;
+
+	// row 99 sucks
+	TransitionMatrix(99, 100) = 1;
+
+	// row 100 sucks
+	//TansitionMatrix(100, 100) = 1;
+
+	// row 100 sucks
+	TransitionMatrix(100, 101) = 1;
+
+
+	//std::cout << TransitionMatrix << std::endl;
+	//exit(1); //class notes 3/21
 
 
 
-	std::cout << TransitionMatrix << std::endl;
 
 }

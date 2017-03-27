@@ -33,7 +33,7 @@ int main(){
 	v = v.transpose() * TransitionMatrix; //V(K+1) = v(k) T.
 
 	std::cout <<  v << std::endl;
-	//myfile << v << std::endl;  //this is just a sample, be careful how you print to file so you can mine useful stats
+	myfile << v << std::endl;  //this is just a sample, be careful how you print to file so you can mine useful stats
 	
 	myfile.close();
 
