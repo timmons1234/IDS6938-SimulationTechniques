@@ -40,6 +40,7 @@ int main(int argc, char* argv[])
 	   IDCHECKPOINT.set_mu(53);
 	   IDCHECKPOINT.initialize();
 	   IDCHECKPOINT.set_seed(1, rd());   // I set the first one to 1 for testing, the others you should use two random seeds (rd(), rd())
+
 	   MM1_Queue    SECURITY1;
 	   SECURITY1.set_file_names("SECURITY1_log.txt", "SECURITY1_wait.txt", "SECURITY1_service.txt");
 	   SECURITY1.set_lambda(6);   // for this assignment this is set to a variable from the for loop.
@@ -47,6 +48,7 @@ int main(int argc, char* argv[])
 	   SECURITY1.autogenerate_new_arrivals(false);
 	   SECURITY1.initialize();
 	   SECURITY1.set_seed(rd(), rd());
+	   
 	   MM1_Queue    SECURITY2;
 	   SECURITY2.set_file_names("SECURITY2_log.txt", "SECURITY2_wait.txt", "SECURITY2_service.txt");
 	   SECURITY2.set_lambda(6);   // for this assignment this is set to a variable from the for loop.
@@ -54,6 +56,7 @@ int main(int argc, char* argv[])
 	   SECURITY2.autogenerate_new_arrivals(false);
 	   SECURITY2.initialize();
 	   SECURITY2.set_seed(rd(), rd());
+	   
 	   MM1_Queue    SECURITY3;
 	   SECURITY3.set_file_names("SECURITY3_log.txt", "SECURITY3_wait.txt", "SECURITY3_service.txt");
 	   SECURITY3.set_lambda(6);   // for this assignment this is set to a variable from the for loop.
@@ -61,6 +64,7 @@ int main(int argc, char* argv[])
 	   SECURITY3.autogenerate_new_arrivals(false);
 	   SECURITY3.initialize();
 	   SECURITY3.set_seed(rd(), rd());
+	   
 	   MM1_Queue    BOARDING;
 	   BOARDING.set_file_names("BOARDING_log.txt", "BOARDING_wait.txt", "BOARDING_service.txt");
 	   BOARDING.set_lambda(6);   // for this assignment this is set to a variable from the for loop.
@@ -70,14 +74,8 @@ int main(int argc, char* argv[])
 
 	   //************************************************************
 
-
    for (; 
 		//TODO: add is_within_error_range check
-	   IDCHECKPOINT.is_within_confidence_interval() ||
-	   SECURITY1.is_within_confidence_interval() ||
-	   SECURITY1.is_within_confidence_interval() ||
-	   SECURITY3.is_within_confidence_interval() ||
-	   BOARDING.is_within_confidence_interval() ||
 	   !IDCHECKPOINT.is_within_error_range(0.002) ||
 	   !SECURITY1.is_within_error_range(0.002) ||
 	   !SECURITY2.is_within_error_range(0.002) ||
@@ -97,18 +95,15 @@ int main(int argc, char* argv[])
           {
             case 0:
 				//TODO add_external_arrival() for ID Checkpoint;
-//				IDCHECKPOINT.is_within_confidence_interval();
-				IDCHECKPOINT.add_external_arrival();
-                 break;
+				SECURITY1.add_external_arrival();
+				break;
             case 1:
 				//TODO add_external_arrival() for Security Queues;
-				SECURITY1.add_external_arrival();
 				SECURITY2.add_external_arrival();
-				SECURITY3.add_external_arrival();
                  break;
             case 2:
                 //TODO add_external_arrival() for Boarding;
-				BOARDING.add_external_arrival();
+				SECURITY3.add_external_arrival();
 				 break;
           }
           next++;
@@ -125,18 +120,11 @@ int main(int argc, char* argv[])
 
 
    //TODO Output statistics airport senario.
-   IDCHECKPOINT.get_current_time();
-   IDCHECKPOINT.plot_results_output();
    IDCHECKPOINT.output(); cout << "*********" << endl;
-   IDCHECKPOINT.plot_results_output(); 
    SECURITY1.output(); cout << "*********" << endl;
-   SECURITY1.plot_results_output();
    SECURITY2.output(); cout << "*********" << endl;
-   SECURITY2.plot_results_output();
    SECURITY3.output(); cout << "*********" << endl;
-   SECURITY3.plot_results_output();
    BOARDING.output(); cout << "*********" << endl;
-   BOARDING.plot_results_output();
    //**************************************************************************
 
 
