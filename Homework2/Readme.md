@@ -1,104 +1,130 @@
 #Homework 2 :  Discrete-Event Simulation Assignment
 
 ## IDS6938-Simulation Techniques - [University of Central Florida](http://www.ist.ucf.edu/grad/)
+## Joey Netterville joey.netterville@ucf.edu
 
-[University of Central Florida](http://www.ist.ucf.edu/grad/)
 This is the framework for homework #2. 
 
 The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 
-asdfasdf
-sadfsad
+# Part 1) Empirical Test of Randomness
+- a) See "01.random number data.statistics 1.xlsx" each tab has a random number engine with associated chart showing the distribution for n=1000. Statistics are listed on the final tab. 
+    - a) I generated average, median and stdev for each point. Statistics isn't something i do on a regular basis. In a team, I would look to others for additional statistics. 
+    - b) I started researching how to generated the other suggested stats and realized i was out of depth and moved on to other parts. 
+- b) I ran varied n sizes from my initial distribution. Statistics were generated and listed on the stats page. 
+    - a) As N gets smaller, the STdev increases. Since I used smaller samples within the main set it changed the overall distribution of numbers within each set. 
+- c) See "02.distribution data statistics.xlsx". Each tab is a distribution and numbers are represented by a side by side chart. statistics are listed on the stats tab. 
+    - a) I reduced n to 1000 for this run. 
+    - b) uniform and normal distribution made sense. I'm not sure what was entirely going on with the other distributions.
+- d) See "03.random number unit square.xlsx" n=1000 for these. I generated 2 sets of data and used one for X and the other for y. I used uniform distribution and set bounds of -1 , 1
+    - a) mr19937_64 has an n-10,000 
+    - b) I think the first point to mention is n=1k isn't high enough. At the same time, 100,000 was too much. 50,000 also seemed to be too much. 
+    - c) you need a meaningful sample size. As we were repeating a lot of tests here i settled on 1k for clarity with a second higher example. 
+    - d) for the random numbers, they appear to be randomly distributed within the unit square
+    - e) i didn't see any discernable patterns. It might be meaningful to repeat the test 5000 times and compare those results against each other.
+    - f) as for part 4, i also generated the results on the unit square within this document. 
+    - g) since this is generated in Excel, I did a conversion to make it appear no a scatter plot.
+    - h) We ran into issues with some of them where they were coming up wrong. I ran an absolute value within the formula before the square root.
+    - i) credit to stack overflow for the formula
+    - j) this part was tedious af because you change the program, compile, run, output data, move to excel, insert charts. There's probably a better way, but it was outside the scope
+- e) See "04.distribution unit.xlsx" n=1000
+    - a) a lot of the same caveats as above
+    - B) i ran a 10k run on normal as it came out looking good. 
+    - c) my image isn't a true square so the circle looks skewed. 
+    - d) I displayed results for the others as they came out. I trimmed them to show the results, but they're not bounded by -1,1
+    - e) I probably did something wrong here, or it's my lack of understanding. 
+    - f) circles are also displayed, but might not be actual circles
+    - g) I like the (circle) plot for fischer. it reminds me of a particle emitter, like a damaged space engine from a game. 
+- f) See D for random numbers and E for distribution
+
+- g) Initially I didn't include Sobol. I added it as it's own file. See "05.sobol.xlsx".
+    - a) I ran this at n-100,000 in the hopes it would look really pattern. 
+    - b) We ran multiple tests against this to get it to look more like a pattern but however i changed the parameters it didn't look like the example. 
+    - c) It does generate a pattern. But it doesn't look like the example. 
+    - d) As of the study group monday, only sarah had a sobol which looked like a pattern.
+    - e) her program looked like ours, we weren't sure why she had those results. 
+    - f) the takeaway for sobol for me was you could use the seed to get repeatable random numbers
+
+# Part 2) Snakes and Ladders
+- a) null state
+    - a) initially i generated this in perl as a csv
+    - b) in the study group i junked it at the advice of others and we rewrote it as a loop
+    - c) I generated the final lines by hand. 
+    - d) since we have a matrix initially populated with 0s you only need to mark the areas where you have a result
+    - e) the final cell is 1. if you "win" you transition to the same spot all the time.
+    - f) the prior line is 1 as well if you're one spot out, all rolls win.
+    - g) a good add here would be to terminate the loop when you succeed and mark the roll number
+    - h) with the completed code, to run a null state game comment out the transition matrix modification class.
+- b) null state analysis: unsure what to do here. 
+    - a) Honestly, i'm excited i got the code into a working state where i could see the board. 
+    - b) this is a giant leap forward compared to my experience with the jello cube. 
+    - c) 
+	
+- c) Snakes and ladders transition
+    - a) first item here, when you have a snake or a ladder you have a 0 at the transition point, and the probability is shifted to the destination
+    - b) initially i wrote this identifying the column with a result and then subtracting it from the original location and adding it to the new location
+    - c) this is important because we have a couple spots where we have overlap. overlap spots represent chance to land on the spot, or chance to be transferred to it
+    - d) I ran sanity checking in my routine to sum all rows to verify we hit 1. Then look for stuff like empty variables or areas outside the row
+    - e) When i rewrote to the loop i build these transition points by hand. 
+    - f) serious take away here, the first row is 0. 
+    - g) i had the program print the matrix and regexed it into excel. from there i was able to troubleshoot and clear up any issues
+    - h) it takes significantly less rolls to complete when you add in this transition points.
+    - i) It would be interesting to see the results of just snakes, or just ladders
+- d) is this a game?
+    - a) we've discussed this in class a couple times. 
+    - b) Games are social constructs to promote social behaviours. 
+    - c) I'd argue this is a game because it supports that. The focus is on shared activity around a common goal.
+    - d) strategy wise this isn't a good example. results are purely on luck rather than choice. 
+- e) see null state and transition state for matrixes
+
+# Part 3)	Queue simulator
+- a) I have an implemented and working simulation with files on github
+- b) implemented
+- c) implemented, formulas taken from webcourses. Ran into an issue here where i didn't () a variable and it broke things. Seemed common, I helped a couple of others who had the same issue.
+- d) It generates statistics, but unsure how to analyze them
+- e) Implemented in Anylogic. see Security_mm1.alp
+
+# Part 4) Extra Features
+- a) Additional Distribution
+    - a) This isn't a tremendous deal. Before I realized we needed to use Sobol as part of the initial random number cases, I used default_random_engine for all tests. 
+- b) Use case for Anylogic
+    - a) Software Price compared to physical 
+    - b) Free student/learning edition available
+    - c) Speed to implement. 
+    - d) Tools are prebuilt. 
+    - e) Visual view of model promotes understanding
+    - f) Modular components can be reused in other code
+    - g) Provides a virtual environment to test changes
+    - h) Modeling the process ahead of time promotes identification of potential issues and risk
+    - i) GUI and pre built tools reduce required skillset and barrier to entry
+    - j) Supports Agent based, discrete, system dynamics within one tool
+    - k) Offers visualizations, broadening the audience and their understanding of the model
+
+# Part 5) Report / Feedback
 
 
-# Introduction
-A Discrete-event Model simulates a complex system as an ordered sequence of well-defined events. Mathematically Discrete-event models use Markov Processes, Queuing systems, events, probability / statistics, and random variables. The purpose of this assignment is to learn the mathematical foundations, how to program these models, and how to simulate them. The assignment is due Tuesday, March 28, 2017 at 11:59 P.M.
 
-Major parts for the Assignment
-You can think of the assignment broken up to 4 major parts:
-* Empirical Tests of Randomness
-* Snakes and Ladders (Discrete Event Markov Chains and Monte Carlo Simulations)
-* (TODO: Discrete Event Simulation)
-* Composing a final report
-
-The goal of this assignment is to become familiar with the concepts in the second third of the class. You will be expected to compose a *final report* which demonstrates your understanding on the material in each section of the assignment. Be visual! - Pictures say a thousand words so you do not have to. Show off your different configurations and really explore the assignment.
-
-# Assignment
-##Part 0 - Getting Started
-Read the assignment. Sync your fork with the [main IDS6938 repository](https://github.com/hepcatjk/IDS6938-SimulationTechniques). Use CMake to create project files for the Homework 2 assignment (*Hint: and Discrete Lecture folders*). Set your *startup project* to the correct project. Test building and executing the homework 2 project. Look over and understand the framework and find the functions you need to edit for the assignment.
-
-
-
-##Part 1: Empirical Tests of Randomness (20 pts).
-We looked at different ways to generate [pseudo-random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator) and [quasi random numbers](https://en.wikipedia.org/wiki/Low-discrepancy_sequence). Generating random numbers are crucial to Discrete-Event simulations which rely on random variables and stochastic processes. This problem explores different random number generators, distributions, and statistics. Different [C++ pseudo-random numbers engines are instantiated](http://www.cplusplus.com/reference/random/) already for you. Also a a wide variety of standard distributions are implemented. Two quasi random number generators are also provided.
-* **(a) - 3pts:** Output the results of five different random number engines, using a uniform distribution for values between [0-100]. Generate useful charts and statistics from the output to analyze how uniform these values truly are. You are expected to look at some advanced statistics and test, for example: tests like the Kolmogorov-Smirnov test, Chi-square test, Autocorrelation test, and Spearman’s Rank Correlation Coefficient are a few examples of ones your could use.)
-* **(b) - 2pts:**  Vary *N* (amount of samples). How do things change.
-* **(c) - 3pts:** Fix a random engine of your choice from part (a), and now vary five different [distributions](http://www.cplusplus.com/reference/random/) for just the psedo-random numbers. Again, analyze your results with graphs and statistics of choice.
-* **(d)- 4pts:** Generate random numbers in two-dimensions for a unit square. Plot the results for the different random number engines. The vertical axis should vary N in increasing order. The horizontal axis should show of the random number engines.
-* **(e)- 4pts:** Generate random numbers in two-dimensions for a unit square. Plot the results for the different distributions. The vertical axis should vary N in increasing order. The horizontal axis should show of the random number engines. (See [Random Numbers Webcourse page](https://webcourses.ucf.edu/courses/1246518/pages/random-numbers?module_item_id=10541423) for a rough idea what you should produce.)
-* **(f)- 4pts:** Repeat parts (d) and (e) with a unit circle.
-
-##Part 2 - Snakes and Ladders (Discrete Event Markov Chains and Monte Carlo Simulations) (30 pts)
-
-We all love board games. A board game can be viewed mathematically as a Markov chain, where the probability of moving to the next position depends only on the position you are currently at and the chances provided by tossing a dice. For this part of the homework we will simulate the game "*Snakes and Ladders*" (This goes by other names: Chutes and Ladders, Moksha Patam but all essentially the same gameplay.)
-
-| Moksha Patam  | Snakes and Ladders |
-| ------------- | ------------- |
-| ![](images/snake1.jpg?raw=true)  | ![](images/snake2.jpg?raw=true) |
-
-##### Background
-The classic game has 100 positions on the board. You toss one die, and move squares based on the result of the die. If you land on a ladder you move up the ladder to a higher numbered square. If you land on a snake's mouth, you descend to a lower numbered square. For purposes of simulation, we will add one extra square 0 (starting position). So there are 101 positions on the board.
-
-The game is **memoryless** - your progression to the next position is independent of how you arrived there (opposed to Blackjack or Candyland where your progression is based on what cards have been drawn). A Markov Chain defines the probability of a move from state *i* to state *j* by a **Transition Matrix**, *T*. So in the case of *Snakes and Ladders* the dimensions of a transition matrix is 101x101.
-
-* **(a) Null State Game transition matrix - 10pts:** The *null state game* is defined by a game with no snakes and no ladders. This simplifies the game to just the moves of the two dice rolls. Create the transition matrix for the null state game. The Transition Matrix would be decided by the roll of a fair, six-sided die, so it would start to look like:
-<BR>![](images/null.png?raw=true)<BR>
-From state 0 it is equally probable of landing on squares 1-6. From state 1 t is equally probable of landing on squares 2-7, and so on. Create this transition matrix. The end is trickier, we will consider any roll past 100 a win case. (Opposed to rolling exactly onto square 100.) Confirm you have a well formed stochastic matrix (Write checks for confirming each row of T sums to one and all elements are non-negative). The Transition Matrix methods can be found in the TransitionMatrix.h file.
-
-* **(b) Simulate and analyze the results of Null State Game - 10pts:** What is the modal number of moves required by a single player to finish the game? We will be simulating the game two different ways. **(1) Markov Chain**: The game can be analyzed with a row vector, *v* with 101 components, representing the probabilities that the player is on each of the positions. V(0) is (1,0,0,...,0) since we know we start at square 0. v evolves by: <BR>![](images/prob.png?raw=true)<BR>
-For this part (1) use the *Markov project* in the Snake and Ladders starter code.<BR>
-**(2) Monte Carlo**: he will will use a monte carlo process to solve our Discrete Time Markov Chains. Here (2) use the DTMC project, and utilize the DTMC method similar to what we did in class. <BR><BR>Produce graphs to analyze the results and show how the game evolves over time for both methods. Plot useful statistics of the results such as percentage chance of finishing the game in n-moves, cumulative probability of finishing the game in n-moves, and other ways to convey useful information of the results.
-
-* **(c) Simulate and analyze the results of Snakes and Ladders -10pts:**  Construct a new transition matrix based on the table:
+# Part 6) Extra Credit
+- a) Anylogic snakes and ladders See SNL1.alp. 
+    - a) I created a partial implementation of of the null state snakes and ladders using Anylogic. 
+    - b) It shows a minimum of two rolls and a maximum of 7. 
+    - c) Each space on the board is represented by a 0 second queue feeding into a choice object to simulate a roll. 
+    - d) Our shortest path through the map is any combination of rolls totaling over 6 ex:1-6,3-4,6-6
+    - e) Our longest path through the map would be a roll string of 1,1,1,1,1,1,1
+    - f) There were two interesting problems to solve. 1) how to handle the roll within Anylogic and, 2) how to keep everything organized. 
+    - g) Anylogic offers two choice trees: A single a/b option, and an a/b/c/d/e option. 
+        - 1) Since our dice has 6 sides, we need to implement a workaround. 
+        - 2) I fed from the queue into a choice tree with 2 50% option. Each option goes into another choice tree with 3 33% chances to proceed. 
+        - 3) this way we have Ex from the starting point a)2,3,4 and b)5,6,7
+    - h) Organization also became a key element. 
+        - 1) Since each spot on the board creates 3 objects and 8 connection points, it quickly became a spaghetti nightmare. 
+        - 2) There might be a more intuitive method within the program which controls where queues feed out to/in from. 
+        - 3) In a full implementation, it would be optimal to add bends and connection points between objects, and lay them out cleanly. 
+        - 4) Additionally, more space would help distinguish all the items. 
+        - 5) With 101 queues, 300 choice objects and connectors between all items it might be difficult to keep track of where everything goes. 
+        - 6) Unfortunately this creates a situation where you can't see it all in the same screen.
+        - 7) Possibly implementing a 2/3d visualization would simplify keeping track of everything. 
+    - i) While unimplemented, snakes and ladders could be implemented by connecting backwards or forwards to other tile objects. 
 
 
-Ladders From  | Ladders To | |  Snakes From  | Snakes To 
--------- | -------- | ------------- | -------- | -------- 
-3|19| |11|7
-15|37| |18|13
-22|42| |28|12
-25|64| |36|34
-41|73| |77|16
-53|74| |47|26
-63|86| |83|39
-76|91| |92|75
-84|98| |99|70
-
-
-
-Run the same simulation and analyze your results similar to part (b) for the proper game of *Snakes and Ladders* for both methods. How often are the snakes and ladders used, how do the probability of finishing change, etc? What is the maximum and expected amount of moves for the game? Use charts and graphs to illustrate these points.
-* **(d) Think - 0pts:** If these games are built entirely on chance, do they require any strategy? Is it really a *game*, would you rather play games of chance or games of strategy?
-
-
-##Part 3 - Discrete-Event Simulation (30 pts)
-
-
-##Part 4 - Implementing Extra Features (10 pts)
-Implementing 2 features on the extra features list. Pick any feature on the "*extra features*" list below to customize your assignment to fit your interests. Please document this in your writeup. (*Note: These should total 10pts. You could successfully implement a feature worth 10pts or greater. This also fulfills this requirement. The features are assigned points based on difficulty. The 5pt features are more straightforward.*)
-
-##Part 5 - Final Report (10 pts)
-Write up the results to the previous sections in the main *readme.md* in your forked repository. Turn in the URL for your fork in webcourses. Be visual. The report should contain the graphs and analysis requested. I have high expectations for the documentation here and you should allot the proper time to compose the writeup.
-
-
-##Extra Features (Extra Credit - 25pts)
-You have to implement two features from this list for Part 4. You may choose any two features you wish from this list. (Please explicitly note them in your *Readme.md*)
-
-If you feel like going beyond the scope of the assignment, you should consider implementing more of the following extra features. *Get the assignment working without them first.* You can get a maximum of 25 points in extra credit. Simply implementing these things doesn't guarantee you a 25; you really need to go above and beyond to get the full amount. (*The instructor reserves the right to hand out extra credit as his he sees fit.*)
-
-* **(5 Points)** - Implement and compare Halton, Hammersley, (Or another quasi method) Quasi sequences and add them to your analysis for appropriate subparts of Part 1.
-* **(5 Points)** - Implement different distributions inside the Quasi random sequences and add them to your analysis for appropriate subparts of Part 1.
-* **(5 Points)** - Implement and compare another (advanced) psedo random sequences and add them to your analysis for all subparts of Part 1 (Examples include: [PCG](http://www.pcg-random.org/), or [Random123](https://github.com/DEShawResearch/Random123-Boost)).
-* **(20 Points)** - Complete Part 2 with a different board game. Construct the game's transition matrix, simulate the game, and analyze the results (Run the game past the instructor).
-* **(20 Points)** - Complete Part 2 with a 3D version of Snakes and Ladders. Construct the game's transition matrix, simulate the game, and analyze the results.
-* **(10 Points)** - Provide code in (Python, R, Matlab...) that demonstrates an animation of the board itself evolving overtime for Snakes in Ladder for part 2. 
-* **(N Points)** - You are welcome to make suggestions for a feature of your own choosing, but they must be approved by instructor before implementing.
+- b) 2d visualization of Part 3 See airport with 2d1.alp
