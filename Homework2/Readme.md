@@ -8,15 +8,15 @@ This is the framework for homework #2.
 The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 
 # Part 1) Empirical Test of Randomness
-- a) See "01.random number data.statistics 1.xlsx" each tab has a random number engine with associated chart showing the distribution for n=1000. Statistics are listed on the final tab. 
+- a) See [01.random number data.statistics 1.xlsx] [AAAA] each tab has a random number engine with associated chart showing the distribution for n=1000. Statistics are listed on the final tab. 
     - a) I generated average, median and stdev for each point. Statistics isn't something i do on a regular basis. In a team, I would look to others for additional statistics. 
     - b) I started researching how to generated the other suggested stats and realized i was out of depth and moved on to other parts. 
 - b) I ran varied n sizes from my initial distribution. Statistics were generated and listed on the stats page. 
     - a) As N gets smaller, the STdev increases. Since I used smaller samples within the main set it changed the overall distribution of numbers within each set. 
-- c) See "02.distribution data statistics.xlsx". Each tab is a distribution and numbers are represented by a side by side chart. statistics are listed on the stats tab. 
+- c) See [02.distribution data statistics.xlsx] [BBBB]. Each tab is a distribution and numbers are represented by a side by side chart. statistics are listed on the stats tab. 
     - a) I reduced n to 1000 for this run. 
     - b) uniform and normal distribution made sense. I'm not sure what was entirely going on with the other distributions.
-- d) See "03.random number unit square.xlsx" n=1000 for these. I generated 2 sets of data and used one for X and the other for y. I used uniform distribution and set bounds of -1 , 1
+- d) See [03.random number unit square.xlsx] [CCCC] n=1000 for these. I generated 2 sets of data and used one for X and the other for y. I used uniform distribution and set bounds of -1 , 1
     - a) mr19937_64 has an n-10,000 
     - b) I think the first point to mention is n=1k isn't high enough. At the same time, 100,000 was too much. 50,000 also seemed to be too much. 
     - c) you need a meaningful sample size. As we were repeating a lot of tests here i settled on 1k for clarity with a second higher example. 
@@ -27,7 +27,7 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - h) We ran into issues with some of them where they were coming up wrong. I ran an absolute value within the formula before the square root.
     - i) credit to stack overflow for the formula
     - j) this part was tedious af because you change the program, compile, run, output data, move to excel, insert charts. There's probably a better way, but it was outside the scope
-- e) See "04.distribution unit.xlsx" n=1000
+- e) See [04.distribution unit.xlsx] [DDDD] n=1000
     - a) a lot of the same caveats as above
     - B) i ran a 10k run on normal as it came out looking good. 
     - c) my image isn't a true square so the circle looks skewed. 
@@ -37,7 +37,7 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - g) I like the (circle) plot for fischer. it reminds me of a particle emitter, like a damaged space engine from a game. 
 - f) See D for random numbers and E for distribution
 
-- g) Initially I didn't include Sobol. I added it as it's own file. See "05.sobol.xlsx".
+- g) Initially I didn't include Sobol. I added it as it's own file. See [05.sobol.xlsx] [EEEE].
     - a) I ran this at n-100,000 in the hopes it would look really pattern. 
     - b) We ran multiple tests against this to get it to look more like a pattern but however i changed the parameters it didn't look like the example. 
     - c) It does generate a pattern. But it doesn't look like the example. 
@@ -75,14 +75,14 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - b) Games are social constructs to promote social behaviours. 
     - c) I'd argue this is a game because it supports that. The focus is on shared activity around a common goal.
     - d) strategy wise this isn't a good example. results are purely on luck rather than choice. 
-- e) see null state and transition state for matrixes
+- e) see [null state export.txt] [IIII] and [transition export.txt] [JJJJ] for matrixes
 
 # Part 3)	Queue simulator
 - a) I have an implemented and working simulation with files on github
 - b) implemented
 - c) implemented, formulas taken from webcourses. Ran into an issue here where i didn't () a variable and it broke things. Seemed common, I helped a couple of others who had the same issue.
 - d) It generates statistics, but unsure how to analyze them
-- e) Implemented in Anylogic. see Security_mm1.alp
+- e) Implemented in Anylogic. see [Security_mm1.alp] [GGGG]
 
 # Part 4) Extra Features
 - a) Additional Distribution
@@ -105,7 +105,7 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 
 
 # Part 6) Extra Credit
-- a) Anylogic snakes and ladders See SNL1.alp. 
+- a) Anylogic snakes and ladders See [SNL1.alp] [FFFF]. 
     - a) I created a partial implementation of of the null state snakes and ladders using Anylogic. 
     - b) It shows a minimum of two rolls and a maximum of 7. 
     - c) Each space on the board is represented by a 0 second queue feeding into a choice object to simulate a roll. 
@@ -127,4 +127,17 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - i) While unimplemented, snakes and ladders could be implemented by connecting backwards or forwards to other tile objects. 
 
 
-- b) 2d visualization of Part 3 See airport with 2d1.alp
+- b) 2d visualization of Part 3 See [airport with 2d1.alp] [HHHH]
+
+   [AAAA]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/01.random%20number%20data.statistics1.xlsx>
+   [BBBB]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/02.distribution%20data%20statistics.xlsx>
+   [CCCC]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/03.random%20number%20unit%20square.xlsx>
+   [DDDD]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/04.distribution%20unit.xlsx>
+   [EEEE]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/05.sobol.xlsx>
+   [FFFF]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/SNL1.alp>
+   [GGGG]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/Security_mm1.alp>
+   [HHHH]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/airport%20with%202d1.alp>
+   [IIII]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/null%20state%20export.txt>
+   [JJJJ]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/transition%20export.txt>
+
+
