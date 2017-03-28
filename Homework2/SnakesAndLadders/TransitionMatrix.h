@@ -213,6 +213,6 @@ void ModifyTransitionMatrix()
 	TransitionMatrix(97, 99) = 0;	TransitionMatrix(97, 70) = prob;
 	TransitionMatrix(98, 99) = 0;	TransitionMatrix(98, 70) = prob;
 
-		std::cout << TransitionMatrix << std::endl;
+//		std::cout << TransitionMatrix << std::endl;
 
 }
