@@ -6,7 +6,7 @@ int size = 101;  //TODO
 Eigen::MatrixXf TransitionMatrix(size, size);
 Eigen::VectorXf v(size);
 
-unsigned int ROLLS = 10; //TODO
+unsigned int ROLLS = 30; //TODO
 
 double prob = 1.0/6.0 ;  //TODO
 
@@ -51,16 +51,16 @@ void SetTransitionMatrix()
 	TransitionMatrix(99, 100) = 1;
 
 	// row 100 sucks
-	//TansitionMatrix(100, 100) = 1;
+	TransitionMatrix(100, 100) = 1;
 
 	// row 100 sucks
 	TransitionMatrix(100, 101) = 1;
 
-
-	//std::cout << TransitionMatrix << std::endl;
-	//exit(1); //class notes 3/21
-
+	// row 101 sucks
+	TransitionMatrix(101, 101) = 1;
 
 
-
+//	std::cout << TransitionMatrix << std::endl;
+//	std::cout << "100:" << TransitionMatrix(101, 101) << std::endl;
+//	std::cout << "101:" << TransitionMatrix(100, 100) << std::endl;
 }
