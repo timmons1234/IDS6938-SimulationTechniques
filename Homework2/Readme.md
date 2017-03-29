@@ -8,7 +8,7 @@ This is the framework for homework #2.
 The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 
 # Part 1) Empirical Test of Randomness
-- a) See [01.random number data.statistics 1.xlsx] [AAAA] each tab has a random number engine with associated chart showing the distribution for n=1000. Statistics are listed on the final tab. 
+- a) See [01.random number data.statistics 1.xlsx] [PlAA] each tab has a random number engine with associated chart showing the distribution for n=1000. Statistics are listed on the final tab. 
     - a) I generated average, median and stdev for each point. Statistics isn't something i do on a regular basis. In a team, I would look to others for additional statistics. 
     - b) I started researching how to generated the other suggested stats and realized i was out of depth and moved on to other parts. 
 - b) I ran varied n sizes from my initial distribution. Statistics were generated and listed on the stats page. 
@@ -58,7 +58,9 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 - b) null state analysis: unsure what to do here. 
     - a) Honestly, i'm excited i got the code into a working state where i could see the board. 
     - b) this is a giant leap forward compared to my experience with the jello cube. 
-    - c) 
+    - c) I think the goal at this point was to look at how many turns it took to get through the board based on how many rolls you have
+    - d) I think there's a way to export a game state table which would show the percentage chance to land on each square as well as how often you end the game on specific squares. this would be applicable to both null and transition
+    - d) It's possible to win the null state in a range of 17 - 100 games. 44 was about where I saw it start to reasonably converg for me. It was around 50% in the mid 30s. 
 	
 - c) Snakes and ladders transition
     - a) first item here, when you have a snake or a ladder you have a 0 at the transition point, and the probability is shifted to the destination
@@ -69,6 +71,7 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - f) serious take away here, the first row is 0. 
     - g) i had the program print the matrix and regexed it into excel. from there i was able to troubleshoot and clear up any issues
     - h) it takes significantly less rolls to complete when you add in this transition points.
+        - potentially you can also fail to complete a game by continually hitting snakes. 
     - i) It would be interesting to see the results of just snakes, or just ladders
 - d) is this a game?
     - a) we've discussed this in class a couple times. 
@@ -82,6 +85,8 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 - b) implemented
 - c) implemented, formulas taken from webcourses. Ran into an issue here where i didn't () a variable and it broke things. Seemed common, I helped a couple of others who had the same issue.
 - d) It generates statistics, but unsure how to analyze them
+    - It was suggested by a peer in class about how you could look at the times generated per queue and figure out and follow the route through. 
+    - This seemed to be generated really well within Anylogic. 
 - e) Implemented in Anylogic. see [Security_mm1.alp] [GGGG]
 
 # Part 4) Extra Features
@@ -101,10 +106,18 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
     - k) Offers visualizations, broadening the audience and their understanding of the model
 
 # Part 5) Report / Feedback
-
-
+- In the event any links fail, all files are located at "https://github.com/timmons1234/IDS6938-SimulationTechniques/tree/master/Homework2/files/"
+- Images for the anylogic simulations are listed in the same folder in case there are issues with importing
+- I worked with other students as part of this project. I think I accomplished more per unit of time during the study session monday working with the team than I did during the entire project.
+- I'd again like to suggest we do more group oriented work. Either as part of the project in class, or in Piazza online, or in teams. 
+- Part three made the most sense for me. The Piazza post laid it outthe requirements as well as the procedure in an intuitive fashion. It was less about coding, and more about understanding what was going on.
+- The simulation fed into Anylogic and vice versa. Understanding one made the other easier. 
+- Reworking the transition matrix felt rewarding, once i had a direction to go in. Seeing the data output and moving the items from the variable sets made it more understandable. Once i have something to work with, i can usually figure out what's wrong with it. But without feedback from the program, I generally feel lost and frustrated. 
+- I wasn't in class when we voted on the final. With how much material we've covered in class I'm unsure how to respond. Will the final be math based, programming based, ide based, simulation based, concept based?
+- Final note. Thanks!
 
 # Part 6) Extra Credit
+- I think of this less as extra credit, and more fill in points for items which didnt get completed
 - a) Anylogic snakes and ladders See [SNL1.alp] [FFFF]. 
     - a) I created a partial implementation of of the null state snakes and ladders using Anylogic. 
     - b) It shows a minimum of two rolls and a maximum of 7. 
@@ -128,8 +141,9 @@ The assignment is due: **Tuesday, March 28 at 11:59PM (EST)**
 
 
 - b) 2d visualization of Part 3 See [airport with 2d1.alp] [HHHH]
+    - Corey showed the study group how to do it and it was pretty easy to duplicate. if anyone deserves extra points for this, it's him for being responsible for explaining it to the rest of us
 
-   [AAAA]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/01.random%20number%20data.statistics1.xlsx>
+   [PlAA]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/01.random%20number%20data.statistics1.xlsx>
    [BBBB]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/02.distribution%20data%20statistics.xlsx>
    [CCCC]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/03.random%20number%20unit%20square.xlsx>
    [DDDD]: <https://github.com/timmons1234/IDS6938-SimulationTechniques/blob/master/Homework2/files/04.distribution%20unit.xlsx>
