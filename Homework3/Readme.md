@@ -16,3 +16,9 @@ You will be expected to compose a *final report* which demonstrates your underst
 I'm using Google Docs to write the document. Here's a [link](https://docs.google.com/document/d/1vLcWumUYAgby2vSN-l5fRd6MZU2gC8tbJF54pigwBxg/edit?usp=sharing) to the report.
 Files are uploaded to Github, and will be linked from within the report. 
 
+This project is complete as of 4/25 unless I have some major epiphany and bang out some brilliant code. 
+
+Besides, I have two finals to take and should really focus on those. 
+
+Thanks!
+
